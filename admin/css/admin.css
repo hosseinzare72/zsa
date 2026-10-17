@@ -1,0 +1,291 @@
+/*
+ * استایل‌های صفحه مدیریت افزونه ZSA Portfolio Manager
+ * نسخه: 1.0.0
+ */
+
+.zsa-pm-pill {
+	display: inline-block;
+	padding: 4px 10px;
+	border-radius: 99px;
+	font-size: 11px;
+	font-weight: 800;
+	line-height: 1;
+}
+.zsa-pm-pill--pub {
+	background: rgba(16, 185, 129, 0.15);
+	color: #10b981;
+}
+.zsa-pm-pill--soon {
+	background: rgba(245, 158, 11, 0.15);
+	color: #f59e0b;
+}
+.zsa-pm-no-thumb,
+.zsa-pm-muted {
+	color: #94a3b8;
+}
+.column-zsa_thumb img {
+	border-radius: 6px;
+	max-width: 60px;
+	height: auto;
+}
+
+/* === متاباکس آکاردئونی === */
+#zsa-pm-metabox {
+	display: grid;
+	grid-template-columns: 1fr 320px;
+	gap: 24px;
+	margin: -6px -12px -12px -12px;
+	background: #f8fafc;
+	padding: 16px;
+	border-radius: 8px;
+}
+@media (max-width: 1100px) {
+	#zsa-pm-metabox {
+		grid-template-columns: 1fr;
+	}
+}
+
+.zsa-pm-preview {
+	background: #fff;
+	border-radius: 12px;
+	padding: 16px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+	height: fit-content;
+	position: sticky;
+	top: 40px;
+}
+.zsa-pm-preview h3 {
+	margin: 0 0 12px 0;
+	font-size: 13px;
+	font-weight: 800;
+	color: #475569;
+}
+
+.zsa-pm-preview-card {
+	background: linear-gradient(135deg, #1e293b, #0f172a);
+	border-radius: 18px;
+	overflow: hidden;
+	color: #e2e8f0;
+	direction: rtl;
+	font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+}
+.zsa-pm-preview-img {
+	aspect-ratio: 16 / 10;
+	background: linear-gradient(135deg, #4c1d95, #8b5cf6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+.zsa-pm-preview-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.zsa-pm-preview-badge {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	padding: 4px 10px;
+	border-radius: 20px;
+	background: #f59e0b;
+	color: #000;
+	font-size: 11px;
+	font-weight: 800;
+}
+.zsa-pm-preview-body {
+	padding: 16px;
+}
+.zsa-pm-preview-body h4 {
+	color: #fff;
+	font-size: 16px;
+	margin: 0 0 8px 0;
+	font-weight: 800;
+}
+.zsa-pm-preview-body p {
+	color: #94a3b8;
+	font-size: 13px;
+	line-height: 1.7;
+	margin: 0;
+}
+
+/* === پنل‌های آکاردئونی === */
+.zsa-pm-panels {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.zsa-pm-section {
+	background: #fff;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	overflow: hidden;
+}
+.zsa-pm-section-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 16px;
+	cursor: pointer;
+	user-select: none;
+	background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+	transition: background 0.2s;
+}
+.zsa-pm-section-head:hover {
+	background: #f1f5f9;
+}
+.zsa-pm-section-title {
+	font-weight: 800;
+	color: #1e293b;
+	font-size: 14px;
+}
+.zsa-pm-section-toggle {
+	font-size: 18px;
+	color: #64748b;
+	font-weight: 800;
+	width: 24px;
+	height: 24px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: #fff;
+	border: 1px solid #cbd5e1;
+}
+.zsa-pm-section-body {
+	padding: 16px;
+	border-top: 1px solid #e2e8f0;
+	display: none;
+}
+.zsa-pm-section.open .zsa-pm-section-body {
+	display: block;
+}
+
+.zsa-pm-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+.zsa-pm-grid--4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 720px) {
+	.zsa-pm-grid,
+	.zsa-pm-grid--4 {
+		grid-template-columns: 1fr;
+	}
+}
+
+.zsa-pm-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.zsa-pm-field label {
+	font-weight: 700;
+	font-size: 13px;
+	color: #1e293b;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.zsa-pm-field input[type="text"],
+.zsa-pm-field input[type="url"],
+.zsa-pm-field input[type="number"],
+.zsa-pm-field select,
+.zsa-pm-field textarea {
+	padding: 8px 10px;
+	border-radius: 8px;
+	border: 1px solid #cbd5e1;
+	background: #fff;
+	font-family: inherit;
+	font-size: 13px;
+	width: 100%;
+	direction: rtl;
+}
+.zsa-pm-field textarea {
+	resize: vertical;
+	min-height: 80px;
+}
+.zsa-pm-field small {
+	color: #64748b;
+	font-size: 12px;
+}
+.zsa-pm-counter {
+	color: #64748b;
+	font-size: 11px;
+	font-weight: 600;
+	background: #f1f5f9;
+	padding: 2px 6px;
+	border-radius: 6px;
+}
+.zsa-pm-counter.warn {
+	color: #f59e0b;
+}
+.zsa-pm-counter.over {
+	color: #ef4444;
+}
+
+.zsa-pm-link-row {
+	padding: 10px;
+	background: #f8fafc;
+	border-radius: 10px;
+	margin-bottom: 8px;
+	border: 1px dashed #cbd5e1;
+}
+
+.zsa-pm-checkbox-group {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+}
+.zsa-pm-check {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 8px;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.zsa-pm-check:hover {
+	background: #f1f5f9;
+}
+.zsa-pm-check input {
+	margin: 0;
+}
+
+/* === تنظیمات === */
+.zsa-pm-settings h1 {
+	font-weight: 900;
+}
+.zsa-pm-form {
+	background: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+}
+.zsa-pm-tools {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+.zsa-pm-tool-card {
+	background: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+}
+.zsa-pm-tool-card h3 {
+	margin-top: 0;
+}
+.zsa-pm-tool-result {
+	margin-right: 12px;
+	color: #10b981;
+	font-weight: 700;
+}

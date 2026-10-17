@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zsa-pm/portfolio",
+	"version": "1.1.0",
+	"title": "پورتفولیو ZSA",
+	"category": "widgets",
+	"icon": "portfolio",
+	"description": "نمایش پروژه‌های استودیوی ZSA به‌صورت گرید، موکاپ وب، به‌زودی، شمارنده یا صفحهٔ کامل.",
+	"keywords": [ "zsa", "portfolio", "پورتفولیو", "پروژه" ],
+	"textdomain": "zsa-pm",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"mode": {
+			"type": "string",
+			"default": "projects",
+			"enum": [ "projects", "web", "soon", "stats", "page" ]
+		},
+		"type": {
+			"type": "string",
+			"default": ""
+		},
+		"columns": {
+			"type": "number",
+			"default": 0
+		},
+		"limit": {
+			"type": "number",
+			"default": 0
+		},
+		"fullpage": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.css",
+	"render": "file:./render.php"
+}

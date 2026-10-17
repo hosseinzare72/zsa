@@ -1,0 +1,24 @@
+/*
+ * استایل‌های ویرایشگر بلوک «پورتفولیو ZSA»
+ */
+.zsa-pm-block-edit {
+	font-family: Tahoma, Arial, sans-serif;
+}
+.zsa-pm-block-preview {
+	margin: 0;
+	padding: 18px 20px;
+	border: 1px dashed #94a3b8;
+	border-radius: 12px;
+	background: #f8fafc;
+	color: #0f172a;
+}
+.zsa-pm-block-preview strong {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+.zsa-pm-block-preview p {
+	margin: 0 0 4px;
+	font-size: 12px;
+	color: #475569;
+}

@@ -1,0 +1,775 @@
+/*
+ * استایل‌های فرانت‌اند افزونه ZSA Portfolio Manager
+ * نام‌گذاری با پیشوند zsa-pm برای جلوگیری از تداخل با قالب
+ * نسخه: 1.1.1
+ */
+
+:root {
+	--zsa-pm-primary: #3b82f6;
+	--zsa-pm-accent: #f59e0b;
+	--zsa-pm-web: #10b981;
+	--zsa-pm-dark: #0a0e1a;
+	--zsa-pm-darker: #050810;
+	--zsa-pm-text: #e2e8f0;
+	--zsa-pm-muted: #94a3b8;
+	--zsa-pm-border: rgba(255, 255, 255, 0.08);
+	--zsa-pm-glass: rgba(255, 255, 255, 0.03);
+	--zsa-pm-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+	--zsa-pm-radius: 18px;
+	--zsa-pm-heading: #ffffff;
+	--zsa-pm-card: #131c31;
+	--zsa-pm-page-bg: #050810;
+	--zsa-pm-soft: rgba(59, 130, 246, 0.12);
+	--zsa-pm-font: 'Vazirmatn', 'IRANSans', Tahoma, Arial, sans-serif;
+}
+
+/* پوستهٔ روشن — کارت‌ها پس‌زمینهٔ خودشان را دارند و روی هر قالبی خوانا می‌مانند */
+.zsa-pm-theme-light {
+	/* === اصلاح حیاتی: اعمال پس‌زمینه به بدنه صفحه وقتی افزونه فعال است === */
+body.zsa-pm-page {
+	background: var(--zsa-pm-page-bg);
+}
+	--zsa-pm-text: #0f172a;
+	--zsa-pm-muted: #56637a;
+	--zsa-pm-heading: #0f172a;
+	--zsa-pm-border: rgba(15, 23, 42, 0.12);
+	--zsa-pm-glass: #ffffff;
+	--zsa-pm-card: #ffffff;
+	--zsa-pm-page-bg: #f8fafc;
+	--zsa-pm-soft: rgba(59, 130, 246, 0.1);
+	--zsa-pm-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+}
+
+/* === اصلاح حیاتی: اعمال پس‌زمینه به بدنه صفحه وقتی افزونه فعال است === */
+body.zsa-pm-page {
+	background: var(--zsa-pm-page-bg);
+}
+
+/* === Stats === */
+.zsa-pm-stats {
+	position: relative;
+	margin: 60px 0;
+	direction: rtl;
+	font-family: var(--zsa-pm-font);
+}
+.zsa-pm-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	max-width: 1200px;
+	margin: auto;
+	width: 92%;
+}
+.zsa-pm-stat {
+	padding: 35px 20px;
+	border-radius: 24px;
+	background: var(--zsa-pm-card);
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--zsa-pm-border);
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.3s, border-color 0.3s;
+	color: var(--zsa-pm-text);
+}
+.zsa-pm-stat::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: linear-gradient(90deg, var(--zsa-pm-primary), var(--zsa-pm-accent));
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+.zsa-pm-hover .zsa-pm-stat:hover {
+	transform: translateY(-8px);
+	border-color: var(--zsa-pm-primary);
+}
+.zsa-pm-hover .zsa-pm-stat:hover::before {
+	opacity: 1;
+}
+.zsa-pm-stat strong {
+	display: block;
+	font-size: 42px;
+	color: var(--zsa-pm-accent);
+	font-weight: 900;
+	line-height: 1.2;
+	margin-bottom: 8px;
+	font-variant-numeric: tabular-nums;
+}
+.zsa-pm-stat span {
+	color: var(--zsa-pm-text);
+	font-size: 15px;
+	font-weight: 600;
+	display: block;
+}
+
+/* === Projects === */
+.zsa-pm-projects-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--zsa-pm-cols, 2), minmax(0, 1fr));
+	gap: var(--zsa-pm-gap, 28px);
+	direction: rtl;
+	font-family: var(--zsa-pm-font);
+}
+.zsa-pm-project-card {
+	border-radius: 24px;
+	overflow: hidden;
+	background: var(--zsa-pm-card);
+	border: 1px solid var(--zsa-pm-border);
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s, box-shadow 0.4s;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	color: var(--zsa-pm-text);
+}
+.zsa-pm-hover .zsa-pm-project-card:hover {
+	transform: translateY(-12px);
+	border-color: var(--zsa-pm-primary);
+	box-shadow: 0 30px 60px rgba(59, 130, 246, 0.2);
+}
+.zsa-pm-project-img {
+	position: relative;
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	background: linear-gradient(135deg, #1e293b, #0f172a);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.zsa-pm-project-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+.zsa-pm-hover .zsa-pm-project-card:hover .zsa-pm-project-img img {
+	transform: scale(1.08);
+}
+.zsa-pm-project-badge {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	padding: 6px 14px;
+	border-radius: 20px;
+	background: var(--zsa-pm-accent);
+	color: #000;
+	font-size: 12px;
+	font-weight: 800;
+	z-index: 2;
+}
+.zsa-pm-project-body {
+	padding: 28px;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+.zsa-pm-project-body h3 {
+	color: var(--zsa-pm-heading);
+	font-size: 20px;
+	margin: 0 0 12px 0;
+	font-weight: 800;
+}
+.zsa-pm-project-body p {
+	color: var(--zsa-pm-muted);
+	font-size: 14px;
+	line-height: 1.9;
+	margin: 0 0 20px 0;
+}
+.zsa-pm-project-links {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-top: auto;
+}
+.zsa-pm-project-link {
+	display: inline-flex;
+	padding: 10px 18px;
+	border-radius: 10px;
+	background: var(--zsa-pm-primary);
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	transition: background 0.3s, transform 0.3s, color 0.3s;
+	align-items: center;
+	gap: 6px;
+	text-decoration: none;
+}
+.zsa-pm-project-link:hover {
+	background: var(--zsa-pm-accent);
+	transform: translateY(-2px);
+	color: #fff;
+}
+.zsa-pm-project-link--secondary {
+	background: transparent;
+	border: 1px solid var(--zsa-pm-border);
+}
+.zsa-pm-project-link--secondary:hover {
+	background: rgba(127, 137, 150, 0.16);
+	color: var(--zsa-pm-heading);
+}
+.zsa-pm-project-link--tertiary {
+	background: transparent;
+	border: 1px solid var(--zsa-pm-web);
+	color: var(--zsa-pm-web);
+}
+.zsa-pm-project-link--tertiary:hover {
+	background: var(--zsa-pm-web);
+	color: #fff;
+}
+
+/* === Web Portfolio === */
+.zsa-pm-web-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--zsa-pm-cols, 4), minmax(0, 1fr));
+	gap: 20px;
+	direction: rtl;
+	font-family: var(--zsa-pm-font);
+}
+.zsa-pm-web-card {
+	border-radius: 18px;
+	overflow: hidden;
+	background: var(--zsa-pm-card);
+	border: 1px solid var(--zsa-pm-border);
+	transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+	display: flex;
+	flex-direction: column;
+	color: var(--zsa-pm-text);
+}
+.zsa-pm-hover .zsa-pm-web-card:hover {
+	transform: translateY(-8px);
+	border-color: var(--zsa-pm-primary);
+	box-shadow: 0 20px 45px rgba(59, 130, 246, 0.15);
+}
+.zsa-pm-web-bar {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 10px 14px;
+	background: rgba(255, 255, 255, 0.04);
+	border-bottom: 1px solid var(--zsa-pm-border);
+}
+.zsa-pm-web-bar i {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	display: inline-block;
+}
+.zsa-pm-web-bar .d1 { background: #ff5f57; }
+.zsa-pm-web-bar .d2 { background: #febc2e; }
+.zsa-pm-web-bar .d3 { background: #28c840; }
+.zsa-pm-web-bar span {
+	direction: ltr;
+	font-size: 11px;
+	color: var(--zsa-pm-muted);
+	margin-left: auto;
+	letter-spacing: 0.03em;
+}
+.zsa-pm-web-shot {
+	aspect-ratio: 16 / 9;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: #fff;
+}
+.zsa-pm-web-shot em {
+	font-style: normal;
+	font-size: 42px;
+	filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+	line-height: 1;
+}
+.zsa-pm-web-shot h3 {
+	margin: 0;
+	color: #fff;
+	line-height: 1.4;
+	font-size: 16px;
+	font-weight: 800;
+}
+.zsa-pm-web-shot.g1 { background: linear-gradient(135deg, #3a2417, #8a522f); }
+.zsa-pm-web-shot.g2 { background: linear-gradient(135deg, #0c4a6e, #0ea5e9); }
+.zsa-pm-web-shot.g3 { background: linear-gradient(135deg, #1e1b4b, #6d28d9); }
+.zsa-pm-web-shot.g4 { background: linear-gradient(135deg, #064e3b, #10b981); }
+.zsa-pm-web-shot.g5 { background: linear-gradient(135deg, #831843, #ec4899); }
+.zsa-pm-web-shot.g6 { background: linear-gradient(135deg, #7c2d12, #f97316); }
+.zsa-pm-web-shot.g7 { background: linear-gradient(135deg, #0f172a, #475569); }
+.zsa-pm-web-shot.g8 { background: linear-gradient(135deg, #7f1d1d, #f43f5e); }
+.zsa-pm-web-foot {
+	padding: 16px 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: auto;
+}
+.zsa-pm-web-tag {
+	padding: 5px 12px;
+	border-radius: 99px;
+	background: var(--zsa-pm-soft);
+	color: var(--zsa-pm-primary);
+	font-size: 11px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+.zsa-pm-web-link {
+	color: var(--zsa-pm-accent);
+	font-size: 12px;
+	font-weight: 700;
+	text-decoration: none;
+}
+.zsa-pm-web-link:hover {
+	color: var(--zsa-pm-accent);
+	text-decoration: underline;
+}
+
+/* === Coming Soon === */
+.zsa-pm-soon-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 24px;
+	direction: rtl;
+	font-family: var(--zsa-pm-font);
+}
+.zsa-pm-soon-card {
+	padding: 35px 28px;
+	border-radius: 20px;
+	background: var(--zsa-pm-card);
+	border: 2px dashed rgba(245, 158, 11, 0.3);
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.3s, border-color 0.3s, background 0.3s;
+	color: var(--zsa-pm-text);
+}
+.zsa-pm-hover .zsa-pm-soon-card:hover {
+	border-color: var(--zsa-pm-accent);
+	transform: translateY(-6px);
+	background: rgba(245, 158, 11, 0.05);
+}
+.zsa-pm-soon-icon {
+	width: 70px;
+	height: 70px;
+	margin: 0 auto 20px;
+	border-radius: 16px;
+	background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(59, 130, 246, 0.2));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 32px;
+}
+.zsa-pm-soon-card h3 {
+	color: var(--zsa-pm-heading);
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	font-weight: 800;
+}
+.zsa-pm-soon-card p {
+	color: var(--zsa-pm-muted);
+	font-size: 14px;
+	margin: 0;
+	line-height: 1.7;
+}
+.zsa-pm-soon-tag {
+	display: inline-block;
+	margin-top: 16px;
+	padding: 6px 14px;
+	border-radius: 20px;
+	background: rgba(245, 158, 11, 0.15);
+	color: var(--zsa-pm-accent);
+	font-size: 12px;
+	font-weight: 700;
+}
+
+/* === ریسپانسیو === */
+@media ( max-width: 1024px ) {
+	.zsa-pm-projects-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.zsa-pm-web-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media ( max-width: 800px ) {
+	.zsa-pm-projects-grid {
+		grid-template-columns: 1fr;
+	}
+}
+@media ( max-width: 640px ) {
+	.zsa-pm-stats-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+	}
+	.zsa-pm-stat {
+		padding: 25px 15px;
+	}
+	.zsa-pm-stat strong {
+		font-size: 32px;
+	}
+	.zsa-pm-soon-grid {
+		grid-template-columns: 1fr;
+	}
+	.zsa-pm-web-grid {
+		grid-template-columns: 1fr;
+	}
+	.zsa-pm-project-links {
+		flex-direction: column;
+		gap: 8px;
+	}
+	.zsa-pm-project-link {
+		justify-content: center;
+	}
+}
+@media ( prefers-reduced-motion: reduce ) {
+	.zsa-pm-project-card,
+	.zsa-pm-web-card,
+	.zsa-pm-soon-card,
+	.zsa-pm-stat {
+		animation: none !important;
+		transition: none !important;
+		transform: none !important;
+		opacity: 1 !important;
+	}
+}
+
+/* === تصاویر و لوگو داخل کارت پروژه === */
+.zsa-pm-project-img img.zsa-pm-img--cover { object-fit: cover; }
+.zsa-pm-project-img img.zsa-pm-img--contain { object-fit: contain; padding: 12px; }
+.zsa-pm-project-img img.zsa-pm-img--logo {
+	width: auto;
+	height: auto;
+	max-width: 52%;
+	max-height: 74%;
+	object-fit: contain;
+	filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+}
+.zsa-pm-project-icon { color: var(--zsa-pm-heading); font-size: 64px; line-height: 1; }
+.zsa-pm-project-body h3 a { color: inherit; text-decoration: none; }
+.zsa-pm-project-body h3 a:hover { color: var(--zsa-pm-accent); }
+.zsa-pm-project-link:focus-visible,
+.zsa-pm-web-link:focus-visible,
+.zsa-pm-project-body h3 a:focus-visible,
+.zsa-pm-single a:focus-visible,
+.zsa-pm-credit a:focus-visible {
+	outline: 2px solid var(--zsa-pm-accent);
+	outline-offset: 3px;
+}
+
+/* === انیمیشن ورود (فقط وقتی JS فعال است؛ بدون JS همه‌چیز دیده می‌شود) === */
+.zsa-pm-js .zsa-pm-anim:not(.is-in) {
+	opacity: 0;
+	transform: translateY(30px);
+}
+.zsa-pm-js .zsa-pm-anim {
+	transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.4s, box-shadow 0.4s;
+}
+
+/* === کردیت === */
+.zsa-pm-credit {
+	margin: 24px auto;
+	padding: 0 16px;
+	text-align: center;
+	font-size: 13px;
+	color: var(--zsa-pm-muted);
+	font-family: var(--zsa-pm-font);
+}
+.zsa-pm-credit a { color: var(--zsa-pm-accent); text-decoration: none; font-weight: 700; }
+.zsa-pm-credit a:hover { text-decoration: underline; }
+
+/* === صفحهٔ تکی پروژه === */
+.zsa-pm-single {
+	margin: 24px 0;
+	padding: 28px;
+	border-radius: 24px;
+	background: var(--zsa-pm-card);
+	border: 1px solid var(--zsa-pm-border);
+	color: var(--zsa-pm-text);
+	font-family: var(--zsa-pm-font);
+	line-height: 2;
+}
+.zsa-pm-crumbs { font-size: 13px; color: var(--zsa-pm-muted); margin-bottom: 18px; }
+.zsa-pm-crumbs a { color: var(--zsa-pm-muted); text-decoration: none; }
+.zsa-pm-crumbs a:hover { color: var(--zsa-pm-accent); }
+.zsa-pm-crumbs span[aria-hidden] { margin: 0 6px; }
+.zsa-pm-single-lead { font-size: 17px; margin: 0 0 18px; color: var(--zsa-pm-heading); }
+.zsa-pm-platforms { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; }
+.zsa-pm-platforms li {
+	padding: 4px 14px;
+	border-radius: 99px;
+	background: var(--zsa-pm-soft);
+	color: var(--zsa-pm-primary);
+	font-size: 12px;
+	font-weight: 700;
+}
+.zsa-pm-single-content { margin-top: 24px; color: #cbd5e1; }
+.zsa-pm-single-content h2,
+.zsa-pm-single-content h3 { color: var(--zsa-pm-heading); }
+.zsa-pm-related { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--zsa-pm-border); }
+.zsa-pm-related h2 { font-size: 18px; color: var(--zsa-pm-heading); margin: 0 0 10px; }
+.zsa-pm-related ul { margin: 0 0 12px; padding: 0 20px 0 0; }
+.zsa-pm-related a { color: var(--zsa-pm-accent); text-decoration: none; }
+.zsa-pm-related a:hover { text-decoration: underline; }
+
+/* === صفحهٔ کامل (شورت‌کد جامع [zsa_portfolio]) === */
+.zsa-pm-page {
+	direction: rtl;
+	font-family: var(--zsa-pm-font);
+	color: var(--zsa-pm-text);
+	line-height: 1.9;
+	overflow-x: hidden;
+}
+.zsa-pm-page * {
+	box-sizing: border-box;
+}
+.zsa-pm-page .zsa-pm-block {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 4%;
+}
+.zsa-pm-page .zsa-pm-projects-grid,
+.zsa-pm-page .zsa-pm-web-grid,
+.zsa-pm-page .zsa-pm-soon-grid {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.zsa-pm-section-head {
+	text-align: center;
+	margin: 0 0 34px;
+}
+.zsa-pm-section-title {
+	margin: 0 0 8px;
+	font-size: clamp(22px, 3.4vw, 34px);
+	font-weight: 900;
+	color: var(--zsa-pm-heading);
+	line-height: 1.5;
+}
+.zsa-pm-section-sub {
+	margin: 0;
+	color: var(--zsa-pm-muted);
+	font-size: 15px;
+}
+.zsa-pm-page .zsa-pm-block + .zsa-pm-block {
+	margin-top: 90px;
+}
+
+/* === هیرو === */
+.zsa-pm-hero {
+	position: relative;
+	padding: clamp(60px, 11vw, 140px) 6% clamp(50px, 8vw, 100px);
+	text-align: center;
+	overflow: hidden;
+	background:
+		radial-gradient(900px 460px at 18% -10%, rgba(59, 130, 246, 0.22), transparent 65%),
+		radial-gradient(760px 420px at 88% 8%, rgba(245, 158, 11, 0.16), transparent 62%);
+}
+.zsa-pm-hero-inner {
+	max-width: 860px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+.zsa-pm-hero-eyebrow {
+	margin: 0 0 14px;
+	font-size: 13px;
+	font-weight: 800;
+	letter-spacing: 0.16em;
+	color: var(--zsa-pm-accent);
+}
+.zsa-pm-hero-title {
+	margin: 0 0 18px;
+	font-size: clamp(28px, 5.4vw, 54px);
+	font-weight: 900;
+	line-height: 1.35;
+	color: var(--zsa-pm-heading);
+}
+.zsa-pm-hero-sub {
+	margin: 0 0 32px;
+	font-size: clamp(14px, 1.6vw, 18px);
+	color: var(--zsa-pm-muted);
+}
+.zsa-pm-hero-actions {
+	display: flex;
+	gap: 14px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* === دکمه‌ها === */
+.zsa-pm-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 28px;
+	border-radius: 12px;
+	font-size: 15px;
+	font-weight: 800;
+	text-decoration: none;
+	transition: transform 0.25s, box-shadow 0.25s, background 0.25s, color 0.25s;
+	border: 1px solid transparent;
+}
+.zsa-pm-btn--primary {
+	background: var(--zsa-pm-primary);
+	color: #fff;
+	box-shadow: 0 14px 30px rgba(59, 130, 246, 0.28);
+}
+.zsa-pm-btn--primary:hover {
+	transform: translateY(-3px);
+	color: #fff;
+	box-shadow: 0 18px 38px rgba(59, 130, 246, 0.36);
+}
+.zsa-pm-btn--ghost {
+	background: transparent;
+	border-color: var(--zsa-pm-border);
+	color: var(--zsa-pm-heading);
+}
+.zsa-pm-btn--ghost:hover {
+	border-color: var(--zsa-pm-primary);
+	color: var(--zsa-pm-primary);
+	transform: translateY(-3px);
+}
+
+/* === بخش پایانی (CTA) === */
+.zsa-pm-cta {
+	max-width: 900px;
+	margin: 90px auto 0;
+	padding: clamp(32px, 5vw, 56px) 28px;
+	border-radius: 28px;
+	text-align: center;
+	background: var(--zsa-pm-card);
+	border: 1px solid var(--zsa-pm-border);
+	box-shadow: var(--zsa-pm-shadow);
+}
+.zsa-pm-cta h2 {
+	margin: 0 0 12px;
+	font-size: clamp(20px, 2.8vw, 30px);
+	font-weight: 900;
+	color: var(--zsa-pm-heading);
+}
+.zsa-pm-cta p {
+	margin: 0 0 26px;
+	color: var(--zsa-pm-muted);
+	font-size: 15px;
+}
+
+/* === تمام‌صفحه واقعی: فقط محتوا، بدون هدر/فوتر/سایدبار قالب === */
+html.zsa-pm-html-dark,
+html.zsa-pm-html-light {
+	background: var(--zsa-pm-page-bg);
+}
+body.zsa-pm-fullpage {
+	margin: 0 !important;
+	padding: 0 !important;
+	background: var(--zsa-pm-page-bg);
+	color: var(--zsa-pm-text);
+	font-family: var(--zsa-pm-font);
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+body.zsa-pm-fullpage #wpadminbar {
+	position: fixed;
+}
+.zsa-pm-skip-link {
+	position: absolute;
+	right: -9999px;
+	top: 0;
+	z-index: 9999;
+	background: var(--zsa-pm-primary);
+	color: #fff;
+	padding: 10px 18px;
+	border-radius: 0 0 8px 8px;
+}
+.zsa-pm-skip-link:focus {
+	right: 12px;
+}
+.zsa-pm-canvas {
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+.zsa-pm-main {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.zsa-pm-locked {
+	max-width: 520px;
+	margin: 14vh auto;
+	padding: 32px;
+	border-radius: 20px;
+	background: var(--zsa-pm-card);
+	border: 1px solid var(--zsa-pm-border);
+}
+.zsa-pm-canvas .zsa-pm-credit {
+	margin-bottom: 40px;
+}
+
+/* === حالت سازگار: پنهان‌کردن عناصر مزاحم قالب با CSS === */
+body.zsa-pm-chrome-off {
+	background: var(--zsa-pm-page-bg);
+	overflow-x: hidden;
+}
+body.zsa-pm-chrome-off > header,
+body.zsa-pm-chrome-off > footer,
+body.zsa-pm-chrome-off > aside,
+body.zsa-pm-chrome-off > nav,
+body.zsa-pm-chrome-off > div.breadcrumbs,
+body.zsa-pm-chrome-off #masthead,
+body.zsa-pm-chrome-off #colophon,
+body.zsa-pm-chrome-off #secondary,
+body.zsa-pm-chrome-off .site-header,
+body.zsa-pm-chrome-off .site-footer,
+body.zsa-pm-chrome-off .site-branding,
+body.zsa-pm-chrome-off .site-navigation,
+body.zsa-pm-chrome-off .main-navigation,
+body.zsa-pm-chrome-off .widget-area,
+body.zsa-pm-chrome-off .sidebar,
+body.zsa-pm-chrome-off .entry-header,
+body.zsa-pm-chrome-off .entry-footer,
+body.zsa-pm-chrome-off .page-header,
+body.zsa-pm-chrome-off .breadcrumbs,
+body.zsa-pm-chrome-off .breadcrumb,
+body.zsa-pm-chrome-off .post-navigation,
+body.zsa-pm-chrome-off .pagination,
+body.zsa-pm-chrome-off .comments-area,
+body.zsa-pm-chrome-off #comments,
+body.zsa-pm-chrome-off .wp-block-post-title,
+body.zsa-pm-chrome-off .is-layout-constrained > .wp-block-site-header,
+body.zsa-pm-chrome-off .is-layout-constrained > .wp-block-site-footer {
+	display: none !important;
+}
+body.zsa-pm-chrome-off #page,
+body.zsa-pm-chrome-off #content,
+body.zsa-pm-chrome-off .site-content,
+body.zsa-pm-chrome-off .entry-content,
+body.zsa-pm-chrome-off .is-layout-constrained,
+body.zsa-pm-chrome-off .is-layout-flow {
+	margin: 0 !important;
+	padding: 0 !important;
+	max-width: none !important;
+	width: 100% !important;
+	border: 0 !important;
+}
+body.zsa-pm-chrome-off .zsa-pm-page--full {
+	display: block;
+	width: 100%;
+	min-height: 100vh;
+	background: var(--zsa-pm-page-bg);
+}
+
+/* === تصویر شاخص در صفحهٔ تکی پروژه === */
+.zsa-pm-single-figure {
+	margin: 0 0 20px;
+	border-radius: 18px;
+	overflow: hidden;
+	border: 1px solid var(--zsa-pm-border);
+}
+.zsa-pm-single-thumb {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
